@@ -14,4 +14,10 @@ class questions(db.Model):
     option3 = db.Column(db.String, nullable=True)
     option4 = db.Column(db.String, nullable=True)
     answer = db.Column(db.Integer, nullable=True)
-    bcol = db.Column(db.String, nullable=True)   
+    bcol = db.Column(db.String, nullable=True)
+
+    def insert_data(data):
+        print(f'data is {data}')
+        john = questions(**data)
+        db.session.add(john)
+        db.session.commit()

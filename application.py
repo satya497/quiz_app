@@ -37,12 +37,41 @@ def quiz():
     return render_template("dashboard.html",questList=questList, quest=quest) 
 
 @app.route('/add', methods=["POST"])
-def add(): 
+def add():
     subject= request.form.get('sub')
     questList=questions.query.filter_by(subject=subject).all()
     quest=questions.query.filter_by(subject=subject).first()
     return render_template("add.html",questList=questList, quest=quest) 
     
+@app.route('/addnewquestion', methods=["GET","POST"])
+def addnewquestion():
+    if request.method == 'POST':
+        content = request.form.to_dict()
+        output = questions.insert_data(content)
+        return render_template("add.html")
+    else:
+        print('in else')
+    return render_template("add.html")
+
+
+@app.route('/delete', methods=["POST"])
+def delete():
+    subject= request.form.get('sub')
+    questList=questions.query.filter_by(subject=subject).all()
+    quest=questions.query.filter_by(subject=subject).first()
+    print(questList)
+    return render_template("delete.html",questList=questList) 
+    
+@app.route('/deletequestion', methods=["GET","POST"])
+def deletequestion(): 
+    if request.method == 'POST':
+        content = request.form.to_dict()
+        return content
+    else:
+        print('in else')
+    return render_template("delete.html")
+
+
 @app.route("/showQuest/<string:subject>,<int:qid>")
 def showQuest(subject,qid):
     questList=questions.query.filter_by(subject=subject).all()

@@ -14,17 +14,19 @@
 	{% endfor %}
 	</form>
 
-	<form method="POST" action={{url_for('add')}}>
-		<input type="submit" style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #888888;" value="Add Question"/>
-	</form>
+	<div class= "d-flex flex-column justify-content-end box-container">
+		
+		<form method="POST" action={{url_for('delete')}}>
+			<input type="submit"  style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #c02e2e;" value="Delete Question"/>
+		</form>
 
-	<!-- <form method="POST" action={{url_for('quiz')}}>
-		<input type="submit" style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #888888;" value="Delete Question"/>
-	</form>
+		<form method="POST" action={{url_for('add')}}>
+			<input type="submit" style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #f1db0e;" value="Edit Question"/>
+		</form>
 
-	<form method="POST" action={{url_for('quiz')}}>
-		<input type="submit" style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #888888;" value="Edit Question"/>
-	</form> -->
+		<form method="POST" action={{url_for('add')}}>
+			<input type="submit"  style="float: right; margin:10px; padding: 10px;  box-shadow: 5px 10px 10px #46cf6f;" value="Add Question"/>
+		</form>
 	
-
+	</div>
 {% endblock %}

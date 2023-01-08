@@ -67,10 +67,10 @@ a {
 </head>
 <body>
 
-<form method="POST" action={{url_for('deletequestion')}}>
+<form method="POST" action={{url_for('modification')}}>
   <div class="container">
-    <h1>Delete Questions</h1>
-    <p>Please select the question to delete.</p>
+    <h1>Edit Questions</h1>
+    <p>Please select the question to edit.</p>
 
     {% for sb in questList %}
         <input type="checkbox" id='{{sb.qid}}' name='{{sb.qid}}' value='{{sb.question}}'>

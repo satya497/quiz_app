@@ -75,7 +75,26 @@ def deletequestion():
     return render_template("delete.html")
 
 
+@app.route('/edit', methods=["POST"])
+def edit():
+    questList=questions.query.all()
+    print(questList)
+    return render_template("edit.html", questList=questList)
 
+
+@app.route('/modification', methods=["POST"])
+def modification():
+    subject= request.form.get('sub')
+    questList=questions.query.filter_by(subject=subject).all()
+    quest=questions.query.filter_by(subject=subject).first()
+    return render_template("update.html",questList=questList, quest=quest)
+
+@app.route('/update', methods=["POST"])
+def update():
+    subject= request.form.get('sub')
+    questList=questions.query.all()
+    quest=questions.query.filter_by(subject=subject).first()
+    return render_template("edit.html",questList=questList, quest=quest)
 
 
 @app.route("/showQuest/<string:subject>,<int:qid>")

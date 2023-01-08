@@ -56,17 +56,19 @@ def addnewquestion():
 
 @app.route('/delete', methods=["POST"])
 def delete():
-    subject= request.form.get('sub')
-    questList=questions.query.filter_by(subject=subject).all()
-    quest=questions.query.filter_by(subject=subject).first()
+    questList=questions.query.all()
     print(questList)
-    return render_template("delete.html",questList=questList) 
+    return render_template("delete.html", questList=questList) 
     
 @app.route('/deletequestion', methods=["GET","POST"])
 def deletequestion(): 
     if request.method == 'POST':
         content = request.form.to_dict()
-        return content
+        qids_to_delete = list(content.keys())
+        questions.delete_data(qids_to_delete)
+        questList=questions.query.all()
+        print(questList)
+        return render_template("delete.html", questList=questList)
     else:
         print('in else')
     return render_template("delete.html")

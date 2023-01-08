@@ -69,14 +69,13 @@ a {
 </head>
 <body>
 
-<form action={{url_for('deletequestion')}} method = "post">
+<form method="POST" action={{url_for('deletequestion')}}>
   <div class="container">
     <h1>Delete Questions</h1>
     <p>Please select the question to delete.</p>
 
-    
-    {% for sb in subList %}
-        <input type="checkbox" id='{{sb.qid}}' name='{{sb.question}}' value='{{sb.question}}'>
+    {% for sb in questList %}
+        <input type="checkbox" id='{{sb.qid}}' name='{{sb.qid}}' value='{{sb.question}}'>
         <label for="{{sb.qid}}">'{{sb.question}}'</label><br>
 	{% endfor %}
     <button type="submit" class="registerbtn">Delete Question</button>

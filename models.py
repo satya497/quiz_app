@@ -21,3 +21,8 @@ class questions(db.Model):
         john = questions(**data)
         db.session.add(john)
         db.session.commit()
+
+    def delete_data(data):
+        print(f'data is ----{tuple(data)}')
+        questions.query.filter(questions.qid.in_(tuple(data))).delete()
+        db.session.commit()

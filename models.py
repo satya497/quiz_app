@@ -26,3 +26,9 @@ class questions(db.Model):
         print(f'data is ----{tuple(data)}')
         questions.query.filter(questions.qid.in_(tuple(data))).delete()
         db.session.commit()
+    
+    def update_data(data):
+        print(f'data for update is {data}')
+        inqid = data['qid']
+        questions.query.filter_by(qid=inqid).update(data)
+        db.session.commit()

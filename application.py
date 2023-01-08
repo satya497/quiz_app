@@ -4,7 +4,7 @@ import random
 folder_name="static"
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:Satya123@127.0.0.1:3306/quiz"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:********@127.0.0.1:3306/quiz"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = b'hkahs3720/' # use a random string
 app.config["SESSION_PERMANENT"] = False
@@ -101,7 +101,8 @@ def update():
     questList=questions.query.all()
     quest=questions.query.filter_by(subject=subject).first()
     content = request.form.to_dict()
-    output = questions.insert_data(content)
+    print(f'content is {content}')
+    output = questions.update_data(content)
     return render_template("edit.html",questList=questList, quest=quest)
 
 

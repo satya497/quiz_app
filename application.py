@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request,redirect,flash,session
 from models import *
+import random
 folder_name="static"
 
 app = Flask(__name__)
@@ -74,6 +75,9 @@ def deletequestion():
     return render_template("delete.html")
 
 
+
+
+
 @app.route("/showQuest/<string:subject>,<int:qid>")
 def showQuest(subject,qid):
     questList=questions.query.filter_by(subject=subject).all()
@@ -88,6 +92,7 @@ def saveAns():
     sub=request.form.get('subject')
     #update the question id and its selected answer in session variable result
     res=session['result']
+    print(f'res is {res}, qid is {qid}, ans is {ans}')
     res= res+qid+','+ans+','
     session['result']=res
     questList=questions.query.filter_by(subject=sub).all()

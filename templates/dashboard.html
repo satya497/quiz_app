@@ -19,7 +19,7 @@
 
 {% block content %}
 <form method="POST" action={{url_for('saveAns')}}>
-<div class="question"><h5> <input type="text" name="subject" value='{{quest.subject}}' style="border-style:none"> </h5></div>
+<div class="question"><h5> <input type="text" name="qid" value={{quest.qid}} style="border-style:none; width:20px"> <input type="text" name="subject" value='{{quest.subject}}' style="border-style:none"> </h5></div>
 <div class="qst">{{quest.question}}</div>
 	<div class="opt"><input type="radio" name="answer" value="1"> {{quest.option1}}</div>
 	<div class="opt"><input type="radio" name="answer" value="2"> {{quest.option2}}</div>

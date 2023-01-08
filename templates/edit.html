@@ -73,7 +73,7 @@ a {
     <p>Please select the question to edit.</p>
 
     {% for sb in questList %}
-        <input type="checkbox" id='{{sb.qid}}' name='{{sb.qid}}' value='{{sb.question}}'>
+        <input type="radio" id='{{sb.qid}}' name='{{sb.qid}}' value='{{sb.question}}'>
         <label for="{{sb.qid}}">'{{sb.question}}'</label><br>
 	{% endfor %}
     <button type="submit" class="registerbtn">Edit Question</button>

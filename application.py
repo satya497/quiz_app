@@ -85,15 +85,23 @@ def edit():
 @app.route('/modification', methods=["POST"])
 def modification():
     subject= request.form.get('sub')
-    questList=questions.query.filter_by(subject=subject).all()
-    quest=questions.query.filter_by(subject=subject).first()
-    return render_template("update.html",questList=questList, quest=quest)
+    if request.method == 'POST':
+        content = request.form.to_dict()
+        qids_to_edit = list(content.keys())
+        quest=questions.query.filter_by(qid=qids_to_edit).first()
+        print(f'quest is {quest}')
+        return render_template("update.html", quest=quest)
+    else:
+        return 'Check with Team'
+
 
 @app.route('/update', methods=["POST"])
 def update():
     subject= request.form.get('sub')
     questList=questions.query.all()
     quest=questions.query.filter_by(subject=subject).first()
+    content = request.form.to_dict()
+    output = questions.insert_data(content)
     return render_template("edit.html",questList=questList, quest=quest)
 
 
